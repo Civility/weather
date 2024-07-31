@@ -1,0 +1,62 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@layer base {
+  @font-face {
+    font-family: 'Gilroy';
+    font-style: normal;
+    font-weight: 200;
+    font-display: swap;
+    src:
+      local('Gilroy UltraLight'),
+      url('/fonts/Gilroy-UltraLight.woff2') format('woff2'),
+      url('/fonts/Gilroy-UltraLight.woff') format('woff'),
+      url('/fonts/Gilroy-UltraLight.ttf') format('truetype');
+  }
+  @font-face {
+    font-family: 'Gilroy';
+    font-style: normal;
+    font-weight: normal;
+    font-display: swap;
+    src:
+      local('Gilroy Regular'),
+      url('/fonts/Gilroy-Regular.woff2') format('woff2'),
+      url('/fonts/Gilroy-Regular.woff') format('woff'),
+      url('/fonts/Gilroy-Regular.ttf') format('truetype');
+  }
+  @font-face {
+    font-family: 'Gilroy';
+    font-style: normal;
+    font-weight: bold;
+    font-display: swap;
+    src:
+      local('Gilroy Bold'),
+      url('/fonts/Gilroy-Bold.woff2') format('woff2'),
+      url('/fonts/Gilroy-Bold.woff') format('woff'),
+      url('/fonts/Gilroy-Bold.ttf') format('truetype');
+  }
+  html {
+    @apply break-words;
+    @apply leading-normal;
+    @apply subpixel-antialiased;
+    @apply text-base;
+    @apply font-base;
+    @apply scroll-smooth;
+    @apply text-slate-50 dark:text-gray-800;
+    @apply h-full;
+  }
+  body {
+    @apply bg-slate-800 bg-gradient-to-l from-indigo-500;
+    @apply p-4;
+    @apply h-full;
+    & > div {
+      @apply h-full;
+    }
+  }
+  main {
+    @apply h-full;
+  }
+  img {
+    @apply object-cover;
+  }
+}
