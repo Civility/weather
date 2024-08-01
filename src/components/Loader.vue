@@ -1,11 +1,11 @@
 <template>
   <div
-    class="absolute z-50 inset-0 flex justify-center items-center bg-indigo-800/80"
+    class="absolute inset-0 z-50 flex items-center justify-center bg-indigo-800/80"
     role="status"
   >
     <svg
       aria-hidden="true"
-      class="w-10 h-10 text-white animate-spin dark:text-gray-600 fill-indigo-500"
+      class="size-10 animate-spin fill-indigo-500 text-white dark:text-gray-600"
       viewBox="0 0 100 101"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"

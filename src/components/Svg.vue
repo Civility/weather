@@ -1,6 +1,9 @@
 <script setup>
 defineProps({
-  svg: Object
+  svg: {
+    type: Boolean,
+    default: false
+  }
 })
 </script>
 <template>
