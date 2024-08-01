@@ -19,7 +19,8 @@ export default defineConfig({
 		}
 	},
 	define: {
-		'env.API_KEY': JSON.stringify('b7830ad2b495704f1ac6a0d091835d26'),
+		'env.WEATHER_API_KEY': JSON.stringify('b7830ad2b495704f1ac6a0d091835d26'),
+		'env.LOCAL_API_KEY': JSON.stringify('dc123170f473414aa1fd8c0bb1538086'),
 	},
 
 })

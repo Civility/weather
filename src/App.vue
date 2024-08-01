@@ -11,10 +11,11 @@ import { useMainStore } from '@/stores/main'
 import { useWeatherStore } from '@/stores/weather'
 const { fetchWeatherCurrent, fetchWeatherDay } = useWeatherStore()
 const { CITY, WEATHER, WEATHERDAY } = storeToRefs(useWeatherStore())
-const { switchLocale } = useMainStore()
+const { switchLocale, setLocale } = useMainStore()
 const { LOADER, currentDateFormatted, LOCALE } = storeToRefs(useMainStore())
 
 onMounted(() => {
+  setLocale()
   fetchWeatherCurrent()
 })
 // icon weather
@@ -37,27 +38,38 @@ const toggleLocale = () => {
     <!-- <span class="col-span-1">
       <SvgLoader :svg="logoIcon" />
     </span> -->
-    <div v-if="WEATHER" class="grid grid-cols-4 gap-4">
+    <div
+      v-if="WEATHER"
+      class="grid grid-cols-4 gap-4"
+    >
       <div class="col-span-full flex justify-between">
         <span class="">{{ currentDateFormatted }}</span>
-        <label class="inline-flex items-center cursor-pointer">
-          <input type="checkbox" :checked="isEnglish" @change="toggleLocale" class="sr-only peer" />
+        <label class="inline-flex cursor-pointer items-center">
+          <input
+            type="checkbox"
+            :checked="isEnglish"
+            class="peer sr-only"
+            @change="toggleLocale"
+          >
           <span class="mr-3 text-sm font-medium">EN</span>
           <div
-            class="relative w-11 h-6 bg-blue-500 rounded-full peer dark:bg-blue-800 peer-focus:ring-4 peer-focus:ring-purple-300 dark:peer-focus:ring-cyan-800 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-0.5 after:bg-white after:border-blue-500 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-cyan-500"
-          ></div>
+            class="peer relative h-6 w-11 rounded-full bg-blue-500 after:absolute after:left-0.5 after:top-0.5 after:size-5 after:rounded-full after:border after:border-blue-500 after:bg-white after:transition-all after:content-[''] peer-checked:bg-cyan-500 peer-checked:after:translate-x-full peer-checked:after:border-white peer-focus:ring-4 peer-focus:ring-purple-300 dark:border-gray-600 dark:bg-blue-800 dark:peer-focus:ring-cyan-800"
+          />
           <span class="ml-3 text-sm font-medium">RU</span>
         </label>
       </div>
 
-      <h1 class="col-span-full text-2xl font-bold text-center">
-        <span :class="iconContry" class="fi inline-block" /> {{ CITY }}
+      <h1 class="col-span-full text-center text-2xl font-bold">
+        <span
+          :class="iconContry"
+          class="fi inline-block"
+        /> {{ CITY }}
       </h1>
 
       <div class="col-span-full grid grid-cols-6 gap-0">
         <div class="col-span-2 col-start-4 inline-flex leading-[0.3]">
-          <strong class="text-7xl col-span-2">{{ Math.round(WEATHER.main.temp) }} </strong>
-          <span class="font-semibold text-3xl">°C</span>
+          <strong class="col-span-2 text-7xl">{{ Math.round(WEATHER.main.temp) }} </strong>
+          <span class="text-3xl font-semibold">°C</span>
         </div>
         <div class="col-span-2 col-start-4 leading-none">
           <small class="block">Real feel {{ Math.round(WEATHER.main.feels_like) }} °C</small>
@@ -68,13 +80,23 @@ const toggleLocale = () => {
         <p>Описание: {{ WEATHER.weather[0].description }}</p>
         <p>Влажность: {{ WEATHER.main.humidity }}%</p>
         <p>Скорость ветра: {{ WEATHER.wind.speed }} м/с</p>
-        <p>Icon: <img :src="iconUrl" alt="Weather Icon" /></p>
+        <p>
+          Icon: <img
+            :src="iconUrl"
+            alt="Weather Icon"
+          >
+        </p>
       </div>
 
       <!-- <pre>{{ WEATHER }}</pre> -->
 
       <div class="col-span-full">
-        <Btn main @click="fetchWeatherDay()">Прогноз на 5 дней</Btn>
+        <Btn
+          main
+          @click="fetchWeatherDay()"
+        >
+          Прогноз на 5 дней
+        </Btn>
       </div>
     </div>
     <div v-if="WEATHERDAY">

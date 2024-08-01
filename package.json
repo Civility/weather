@@ -17,6 +17,7 @@
     "date-fns": "^3.6.0",
     "flag-icons": "^7.2.3",
     "flowbite": "^2.4.1",
+    "opencage-api-client": "^1.0.7",
     "openweathermap-ts": "^1.2.10",
     "pinia": "^2.1.7",
     "postcss": "^8.4.40",
@@ -30,7 +31,8 @@
     "@vitejs/plugin-vue": "^5.0.5",
     "@vue/eslint-config-prettier": "^9.0.0",
     "eslint": "^8.57.0",
-    "eslint-plugin-vue": "^9.23.0",
+    "eslint-plugin-tailwindcss": "^3.17.4",
+    "eslint-plugin-vue": "^9.27.0",
     "prettier": "^3.2.5"
   }
 }
