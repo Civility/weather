@@ -13,8 +13,16 @@ export const useWeatherStore = defineStore('weather', {
     WEATHERDAY: null
   }),
   getters: {
-    iconUrl: (state) => `http://openweathermap.org/img/wn/${state.WEATHER.weather[0].icon}@2x.png`, // icon weather
-    iconContry: (state) => `fi fi-${state.WEATHER.sys.country.toLowerCase()} ` // icon flag
+    iconUrl: (state) => {
+      return state.WEATHER.weather && state.WEATHER.weather[0].icon
+        ? `http://openweathermap.org/img/wn/${state.WEATHER.weather[0].icon}@2x.png`
+        : ''
+    }, // icon weather
+    iconContry: (state) => {
+      return state.WEATHER.sys && state.WEATHER.sys.country
+        ? `fi fi-${state.WEATHER.sys.country.toLowerCase()} `
+        : 'fi fi-en'
+    } // icon flag
   },
   actions: {
     async fetchWeatherCurrent() {
