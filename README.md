@@ -22,7 +22,7 @@ This project is a Vue 3 application that provides weather forecasts using the Op
 2. Navigate to the project directory:
 
    ```bash
-   cd weather-app
+   cd weather
 
    ```
 

@@ -25,7 +25,7 @@ export const useMainStore = defineStore('main', {
       try {
         const data = await opencage.geocode({
           q: `${latitude},${longitude}`,
-          key: env.LOCAL_API_KEY,
+          key: import.meta.env.VITE_LOCAL_API_KEY,
           language: this.LOCALE === 'ru' ? 'ru' : 'en'
         })
         const components = data.results[0].components

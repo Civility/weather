@@ -1,8 +1,9 @@
 import { defineStore } from 'pinia'
 import { useMainStore } from './main'
 import OpenWeatherMap from 'openweathermap-ts'
+
 const openWeather = new OpenWeatherMap({
-  apiKey: env.WEATHER_API_KEY
+  apiKey: import.meta.env.VITE_WEATHER_API_KEY
 })
 
 openWeather.setUnits('metric')

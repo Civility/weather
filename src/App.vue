@@ -62,12 +62,12 @@ const currentLocale = computed(() => (isRus.value ? 'ru' : 'en'))
 </script>
 
 <template>
-  <Hear />
-  <main class="">
+  <div>
+    <Hear class="mb-4" />
     <!-- <span class="col-span-1">
       <SvgLoader :svg="logoIcon" />
     </span> -->
-    <div v-if="WEATHER" class="flex flex-col gap-4">
+    <main v-if="WEATHER" class="flex flex-col gap-4">
       <section class="grid grid-cols-6 gap-0">
         <h1 class="col-span-full text-left text-2xl font-bold">
           <span :class="iconContry" class="fi inline-block" /> {{ CITY }}
@@ -89,7 +89,7 @@ const currentLocale = computed(() => (isRus.value ? 'ru' : 'en'))
         </div>
       </section>
 
-      <section class=" " @dragover.prevent @drop="onDrop('container')">
+      <section @dragover.prevent @drop="onDrop('container')">
         <div
           v-for="(item, index) in containers.container"
           :key="`container-item-${index}`"
@@ -111,15 +111,16 @@ const currentLocale = computed(() => (isRus.value ? 'ru' : 'en'))
         </div>
       </section>
 
-      <section class=" ">
+      <section>
         <Btn main @click="fetchWeatherDay()"> {{ translate('forecast', currentLocale) }}</Btn>
+        <div v-if="WEATHERDAY">
+          <pre>{{ WEATHERDAY }}</pre>
+        </div>
       </section>
-    </div>
-    <div v-if="WEATHERDAY">
-      <pre>{{ WEATHERDAY }}</pre>
-    </div>
+    </main>
+
     <Loader v-else-if="LOADER" />
-  </main>
+  </div>
 </template>
 
 <style scoped></style>
