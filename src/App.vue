@@ -18,16 +18,12 @@ const { CITY, LOADER, isRus } = storeToRefs(useMainStore())
 // Наблюдаем за изменениями CITY
 watch(CITY, (newCity) => {
   if (newCity) {
-    console.log('newCity', newCity)
     fetchWeatherCurrent()
   }
 })
 onMounted(() => {
   initializeTheme()
   setLocale()
-  // if (CITY.value != '') {
-  //   fetchWeatherCurrent()
-  // }
 })
 const containers = reactive({
   container: JSON.parse(localStorage.getItem('container')) || [
@@ -116,7 +112,7 @@ const currentLocale = computed(() => (isRus.value ? 'ru' : 'en'))
       </section>
 
       <section class=" ">
-        <Btn main @click="fetchWeatherDay()"> Прогноз на 5 дней </Btn>
+        <Btn main @click="fetchWeatherDay()"> {{ translate('forecast', currentLocale) }}</Btn>
       </section>
     </div>
     <div v-if="WEATHERDAY">

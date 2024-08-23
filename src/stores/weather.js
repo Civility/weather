@@ -15,7 +15,7 @@ export const useWeatherStore = defineStore('weather', {
   getters: {
     mainCity: () => {
       const main = useMainStore()
-      return main.CITY.match(/^\w+/)[0] // 1 слово из названия города	
+      return main.CITY.match(/^\w+/)[0] // 1 слово из названия города
     },
     iconUrl: (state) => {
       return state.WEATHER.weather && state.WEATHER.weather[0].icon

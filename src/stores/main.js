@@ -53,6 +53,7 @@ export const useMainStore = defineStore('main', {
           this.LOCALE = location.countryCode === 'RU' ? 'ru' : 'en'
           // this.COUNTRY = location.countryCode
           this.CITY = location.city
+          // this.CITY = 'Moscow'
         },
         (error) => {
           console.error(error)
