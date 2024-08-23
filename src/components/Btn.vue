@@ -57,9 +57,9 @@ const isClass = computed(() => {
     @apply opacity-70 pointer-events-none;
   }
   &__main {
-    @apply text-white hover:text-white;
+    @apply text-white   dark:text-gray-200;
     @apply border border-solid;
-    @apply bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800;
+    @apply bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 dark:from-cyan-600 dark:to-blue-800;
 
     @apply rounded-md;
   }

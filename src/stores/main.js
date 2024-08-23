@@ -8,7 +8,8 @@ export const useMainStore = defineStore('main', {
     LOADER: false,
     LOCALE: '',
     // COUNTRY: '',
-    CITY: ''
+    CITY: '',
+    ISDARKMODE: false
   }),
   getters: {
     isRus: (state) => state.LOCALE === 'ru',
@@ -52,7 +53,6 @@ export const useMainStore = defineStore('main', {
           this.LOCALE = location.countryCode === 'RU' ? 'ru' : 'en'
           // this.COUNTRY = location.countryCode
           this.CITY = location.city
-          console.log('location', location)
         },
         (error) => {
           console.error(error)
@@ -65,6 +65,29 @@ export const useMainStore = defineStore('main', {
       // const weatherStore = useWeatherStore()
       // weatherStore.fetchWeatherCurrent()
       // weatherStore.fetchWeatherDay()
+    },
+    // dark-mode
+    toggleDarkMode() {
+      this.ISDARKMODE = !this.ISDARKMODE
+      if (this.ISDARKMODE) {
+        document.documentElement.classList.add('dark')
+        localStorage.setItem('theme', 'dark')
+      } else {
+        document.documentElement.classList.remove('dark')
+        localStorage.setItem('theme', 'light')
+      }
+    },
+    initializeTheme() {
+      if (
+        localStorage.getItem('theme') === 'dark' ||
+        (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)
+      ) {
+        document.documentElement.classList.add('dark')
+        this.ISDARKMODE = true
+      } else {
+        document.documentElement.classList.remove('dark')
+        this.ISDARKMODE = false
+      }
     }
   }
 })

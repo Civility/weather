@@ -1,10 +1,11 @@
 <script setup>
-import { onMounted, reactive, computed } from 'vue'
+import { onMounted, reactive, computed, ref } from 'vue'
 // import SvgLoader from '@/components/Svg.vue'
 // import logoIcon from '@svg/logo.svg'
 // components
 import Btn from '@/components/Btn.vue'
 import Loader from '@/components/Loader.vue'
+import Hear from '@/components/Hear.vue'
 // pinia
 import { storeToRefs } from 'pinia'
 import { useMainStore } from '@/stores/main'
@@ -12,10 +13,13 @@ import { useWeatherStore } from '@/stores/weather'
 import { translate } from '@/utils/translations'
 const { fetchWeatherCurrent, fetchWeatherDay } = useWeatherStore()
 const { WEATHER, WEATHERDAY, iconUrl, iconContry } = storeToRefs(useWeatherStore())
-const { switchLocale, setLocale } = useMainStore()
-const { CITY, LOADER, currentDateFormatted, isRus, LOCALE } = storeToRefs(useMainStore())
+const { switchLocale, setLocale, initializeTheme, toggleDarkMode } = useMainStore()
+const { CITY, LOADER, currentDateFormatted, isRus, LOCALE, ISDARKMODE } = storeToRefs(
+  useMainStore()
+)
 
 onMounted(() => {
+  initializeTheme()
   setLocale()
   fetchWeatherCurrent()
 })
@@ -50,32 +54,18 @@ const onDrop = (toContainer) => {
     localStorage.setItem('container', JSON.stringify(containers.container))
   }
 }
-// locale
-const toggleLocale = () => {
-  switchLocale(isRus.value ? 'en' : 'ru')
-}
+
 // Вычисляемое свойство для текущего языка
 const currentLocale = computed(() => (isRus.value ? 'ru' : 'en'))
 </script>
 
 <template>
+  <Hear />
   <main class="">
     <!-- <span class="col-span-1">
       <SvgLoader :svg="logoIcon" />
     </span> -->
     <div v-if="WEATHER" class="flex flex-col gap-4">
-      <header class="flex justify-between">
-        <span class="">{{ currentDateFormatted }}</span>
-        <label class="inline-flex cursor-pointer items-center">
-          <input type="checkbox" :checked="isRus" class="peer sr-only" @change="toggleLocale" />
-          <span class="mr-3 text-sm font-medium">EN</span>
-          <div
-            class="peer relative h-6 w-11 rounded-full bg-blue-500 after:absolute after:left-0.5 after:top-0.5 after:size-5 after:rounded-full after:border after:border-blue-500 after:bg-white after:transition-all after:content-[''] peer-checked:bg-cyan-500 peer-checked:after:translate-x-full peer-checked:after:border-white peer-focus:ring-4 peer-focus:ring-purple-300 dark:border-gray-600 dark:bg-blue-800 dark:peer-focus:ring-cyan-800"
-          />
-          <span class="ml-3 text-sm font-medium">RU</span>
-        </label>
-      </header>
-
       <section class="grid grid-cols-6 gap-0">
         <h1 class="col-span-full text-left text-2xl font-bold">
           <span :class="iconContry" class="fi inline-block" /> {{ CITY }}

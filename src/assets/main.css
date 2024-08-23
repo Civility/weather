@@ -42,11 +42,11 @@
     @apply text-base;
     @apply font-base;
     @apply scroll-smooth;
-    @apply text-slate-50 dark:text-gray-800;
+    @apply text-slate-50 dark:text-gray-200;
     @apply h-full;
   }
   body {
-    @apply bg-slate-800 bg-gradient-to-l from-indigo-500;
+    @apply bg-slate-800 bg-gradient-to-l from-indigo-500 dark:bg-slate-700 dark:from-indigo-800;
     @apply p-4;
     @apply h-full;
     & > div {
