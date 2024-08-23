@@ -3,6 +3,7 @@
 	"version": "0.0.1",
 	"private": true,
 	"type": "module",
+	"description": "add quasar for android",
 	"scripts": {
 		"dev": "vite --port 8080",
 		"build": "vite build",
