@@ -13,6 +13,10 @@ export const useWeatherStore = defineStore('weather', {
     WEATHERDAY: null
   }),
   getters: {
+    mainCity: () => {
+      const main = useMainStore()
+      return main.CITY.match(/^\w+/)[0] // 1 слово из названия города	
+    },
     iconUrl: (state) => {
       return state.WEATHER.weather && state.WEATHER.weather[0].icon
         ? `http://openweathermap.org/img/wn/${state.WEATHER.weather[0].icon}@2x.png`
@@ -33,7 +37,7 @@ export const useWeatherStore = defineStore('weather', {
         // openWeather.clearLocation();
         openWeather.setLanguage(main.LOCALE)
         const data = await openWeather.getCurrentWeatherByCityName({
-          cityName: main.CITY || 'Салоники'
+          cityName: this.mainCity
         })
         this.WEATHER = data
       } catch (error) {
@@ -49,7 +53,7 @@ export const useWeatherStore = defineStore('weather', {
         main.LOADER = true
         openWeather.setLanguage(main.LOCALE)
         const data = await openWeather.getThreeHourForecastByCityName({
-          cityName: main.CITY
+          cityName: this.mainCity
         })
         this.WEATHERDAY = data
       } catch (error) {

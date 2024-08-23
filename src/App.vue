@@ -1,5 +1,5 @@
 <script setup>
-import { onMounted, reactive, computed, ref } from 'vue'
+import { onMounted, reactive, computed, watch } from 'vue'
 // import SvgLoader from '@/components/Svg.vue'
 // import logoIcon from '@svg/logo.svg'
 // components
@@ -13,15 +13,21 @@ import { useWeatherStore } from '@/stores/weather'
 import { translate } from '@/utils/translations'
 const { fetchWeatherCurrent, fetchWeatherDay } = useWeatherStore()
 const { WEATHER, WEATHERDAY, iconUrl, iconContry } = storeToRefs(useWeatherStore())
-const { switchLocale, setLocale, initializeTheme, toggleDarkMode } = useMainStore()
-const { CITY, LOADER, currentDateFormatted, isRus, LOCALE, ISDARKMODE } = storeToRefs(
-  useMainStore()
-)
-
+const { setLocale, initializeTheme } = useMainStore()
+const { CITY, LOADER, isRus } = storeToRefs(useMainStore())
+// Наблюдаем за изменениями CITY
+watch(CITY, (newCity) => {
+  if (newCity) {
+    console.log('newCity', newCity)
+    fetchWeatherCurrent()
+  }
+})
 onMounted(() => {
   initializeTheme()
   setLocale()
-  fetchWeatherCurrent()
+  // if (CITY.value != '') {
+  //   fetchWeatherCurrent()
+  // }
 })
 const containers = reactive({
   container: JSON.parse(localStorage.getItem('container')) || [
