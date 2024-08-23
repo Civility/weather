@@ -1,38 +1,38 @@
 {
-  "name": "weatheropen",
-  "version": "0.0.0",
-  "private": true,
-  "type": "module",
-  "scripts": {
-    "dev": "vite --port 8080",
-    "build": "vite build",
-    "preview": "vite preview",
-    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore",
-    "format": "prettier --write src/"
-  },
-  "dependencies": {
-    "@tailwindcss/nesting": "^0.0.0-insiders.565cd3e",
-    "autoprefixer": "^10.4.19",
-    "cssnano": "^7.0.4",
-    "date-fns": "^3.6.0",
-    "flag-icons": "^7.2.3",
-    "flowbite": "^2.4.1",
-    "opencage-api-client": "^1.0.7",
-    "openweathermap-ts": "^1.2.10",
-    "pinia": "^2.1.7",
-    "postcss": "^8.4.40",
-    "tailwindcss": "^3.4.7",
-    "vite": "^5.3.1",
-    "vite-svg-loader": "^5.1.0",
-    "vue": "^3.4.29"
-  },
-  "devDependencies": {
-    "@rushstack/eslint-patch": "^1.8.0",
-    "@vitejs/plugin-vue": "^5.0.5",
-    "@vue/eslint-config-prettier": "^9.0.0",
-    "eslint": "^8.57.0",
-    "eslint-plugin-tailwindcss": "^3.17.4",
-    "eslint-plugin-vue": "^9.27.0",
-    "prettier": "^3.2.5"
-  }
+	"name": "weatheropen",
+	"version": "0.0.1",
+	"private": true,
+	"type": "module",
+	"scripts": {
+		"dev": "vite --port 8080",
+		"build": "vite build",
+		"preview": "vite preview",
+		"lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore",
+		"format": "prettier --write src/"
+	},
+	"dependencies": {
+		"@tailwindcss/nesting": "^0.0.0-insiders.565cd3e",
+		"autoprefixer": "^10.4.19",
+		"cssnano": "^7.0.4",
+		"date-fns": "^3.6.0",
+		"flag-icons": "^7.2.3",
+		"flowbite": "^2.4.1",
+		"opencage-api-client": "^1.0.7",
+		"openweathermap-ts": "^1.2.10",
+		"pinia": "^2.1.7",
+		"postcss": "^8.4.40",
+		"tailwindcss": "^3.4.7",
+		"vite": "^5.3.1",
+		"vite-svg-loader": "^5.1.0",
+		"vue": "^3.4.29"
+	},
+	"devDependencies": {
+		"@rushstack/eslint-patch": "^1.8.0",
+		"@vitejs/plugin-vue": "^5.0.5",
+		"@vue/eslint-config-prettier": "^9.0.0",
+		"eslint": "^8.57.0",
+		"eslint-plugin-tailwindcss": "^3.17.4",
+		"eslint-plugin-vue": "^9.27.0",
+		"prettier": "^3.2.5"
+	}
 }

@@ -37,14 +37,14 @@ This project is a Vue 3 application that provides weather forecasts using the Op
 
 ## Usage
 
-1. Start the development server:
+1. Start the development server (vite --port 8080"):
 
    ```bash
    npm run dev
 
    ```
 
-2. Open your browser and navigate to http://localhost:3000.
+2. Open your browser and navigate to http://localhost:8080.
 
 ## Components
 
