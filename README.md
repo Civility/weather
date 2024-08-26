@@ -35,6 +35,15 @@ This project is a Vue 3 application that provides weather forecasts using the Op
 
 4. Set up your environment variables (API keys, etc.) in a .env file.
 
+   - https://openweathermap.org/api
+   - https://opencagedata.com/api
+
+     ```bash
+     VITE_WEATHER_API_KEY='YOUR_OPENWEATHERMAP_KEY'
+     VITE_LOCAL_API_KEY='YOUR_OPENCAGEDATA_KEY'
+
+     ```
+
 ## Usage
 
 1. Start the development server (vite --port 8080"):
